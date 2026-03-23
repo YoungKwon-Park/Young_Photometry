@@ -1,20 +1,23 @@
-# Real-Time Spectral Unmixing Workflow for Dual-Color Fiber Photometry
+# Spectral Data Pipeline for Multi-Signal Recording and Real-Time Correction
 
-A spectrometer-based workflow for dual-color photometry that covers acquisition design, raw-data reconstruction, MATLAB-to-Python transfer, spectral risk analysis, range-based signal quantification, contamination validation, real-time correction-algorithm design, before/after correction evaluation, and extension to dopamine/serotonin sensors.
+A full signal-processing workflow for converting raw spectrometer recordings into analysis-ready multi-signal datasets, with reconstruction, MATLAB-to-Python transfer, contamination validation, spectral correction, and before/after evaluation built into a single pipeline.
+
+Originally developed in the context of neural recording data, the main technical focus of this project is structured data reconstruction, range-based signal extraction, correction of mixed spectral signals, and reusable workflow design across multiple recording conditions.
 
 ## What this project does
 
-Simultaneous measurement of multiple neural signals is difficult when fluorescence signals overlap across wavelength ranges. This project addresses that problem by building a full workflow for spectrometer-based dual-color photometry, from synchronized acquisition to corrected signal interpretation.
+Multi-signal recording data is difficult to interpret when signals overlap across wavelength ranges, raw outputs are fragmented, and downstream analysis depends on environment-specific formats. This project addresses that problem by building an end-to-end workflow that transforms raw spectrometer outputs into standardized datasets and applies a validated correction strategy to improve mixed-signal interpretation.
 
-Instead of assuming that green and red channels are automatically separated, the workflow:
+The workflow:
 
-- preserves full-spectrum measurements in real time
-- reconstructs fragmented acquisition outputs into standardized datasets
-- quantifies signals from predefined wavelength ranges
-- validates asymmetric contamination between sensor ranges
-- defines a spectrally structured correction template for real-time use
-- compares mixed recordings before and after correction
-- extends the same workflow to dopamine/serotonin sensor data
+- Preserves full-spectrum measurements during acquisition
+- Reconstructs fragmented raw outputs into continuous session-level datasets
+- Transfers structured MATLAB outputs into a Python-compatible analysis format
+- Extracts signals from predefined wavelength ranges rather than single-point values
+- Validates asymmetric crosstalk between channels
+- Defines a spectrally structured correction template for real-time use
+- Compares mixed recordings before and after correction
+- Tests workflow reuse on a different neurotransmitter-sensor pair
 
 ## Workflow structure
 
@@ -50,18 +53,19 @@ Application of the same workflow to a different neurotransmitter-sensor pair.
 
 ## Core technical message
 
-The workflow shows that dual-color photometry should not be treated as a simple two-channel recording problem. Reliable interpretation requires:
+This project treats mixed spectral recording as a data-processing and signal-isolation problem rather than as a simple two-channel measurement task. Reliable interpretation required:
 
-- full-spectrum measurement rather than fixed-channel assumption
-- structured reconstruction and standardization of raw outputs
-- range-based quantification instead of single-point extraction
-- validation of contamination directionality
-- a correction model that preserves local spectral structure
-- evaluation of mixed signals before and after correction
+- Full-spectrum acquisition instead of fixed-channel assumption
+- Reconstruction and standardization of fragmented raw outputs
+- Reusable transfer between MATLAB and Python environments
+- Range-based signal quantification from defined wavelength intervals
+- Empirical validation of contamination directionality
+- A correction model that preserves local spectral structure
+- Before/after evaluation of algorithmic impact in mixed recordings
 
 ## Main result
 
-Using GCaMP6f and jRGECO1a as a validation pair, the workflow identifies directionally biased contamination from the green sensor into the red measurement range, defines a reproducible spectral correction template, and evaluates the effect of correction in dual-injection recordings. The final extension to dopamine/serotonin data supports the reuse of the same workflow beyond the original validation pair.
+Using GCaMP6f and jRGECO1a as a validation pair, the workflow identifies directionally biased contamination from the green-associated signal into the red measurement range, defines a reproducible spectral correction template, and evaluates the effect of correction in mixed dual-injection recordings. The final application to dopamine/serotonin data supports reuse of the same workflow beyond the original validation pair.
 
 ## Recommended reading order
 
