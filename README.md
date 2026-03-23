@@ -4,6 +4,16 @@ An end-to-end data pipeline for transforming fragmented spectrometer outputs int
 
 Although the project was developed using spectrometer-based multi-signal data, its main technical contribution lies in structured data processing, workflow standardization, and reusable analysis pipeline design.
 
+  
+<p align="center">
+  <img src="assets/figures/fiber_workflow.png" alt="Workflow overview" width="700">
+</p>
+
+<p align="center">
+  <em>Figure 1. End-to-end workflow for mixed-signal data processing and correction.</em>
+</p>
+
+  
 ## Technical Challenges
 
 Raw signal-processing workflows often produce fragmented, environment-dependent outputs that are difficult to standardize, compare, and interpret consistently.
